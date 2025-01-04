@@ -1,0 +1,352 @@
+<div class="container1">
+  <!-- <nav class="breadcrumb-nav">
+    <ul class="breadcrumb">
+      <li *ngFor="let breadcrumb of breadcrumbs; let last = last" [class.active]="last">
+        <ng-container *ngIf="!last">
+          <a [routerLink]="breadcrumb.path">{{ breadcrumb.label }}</a>
+        </ng-container>
+        <ng-container *ngIf="last">
+          {{ breadcrumb.label }}
+        </ng-container>
+      </li>
+    </ul>
+  </nav> -->
+
+
+
+  <div class="container2">
+
+    <div class="content-outer">
+      <div class="search-content">
+        <div class="search-box">
+          <!-- /* From Uiverse.io by Lakshay-art */  -->
+          <div class="inner-box">
+            <div class="search">
+                <input 
+                placeholder="Search by locality" 
+                type="text" 
+                [(ngModel)]="this.searchText"
+                (keyup.enter)="searchByLocality()"/>
+                <button class="add" (click)="searchByLocality()">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="card" *ngIf="!searchOn">
+          <div class="product-card" *ngFor="let product of drivingSchoolsList" >
+            <div class="product-image">
+              <!-- Optionally add an image -->
+              <img [src]="product.photoUrl" alt="Product Image" *ngIf="product.photoUrl">
+            </div>
+        
+            <h2 class="product-name" (click)="viewSchoolDetails(product.schoolName)">{{ product.schoolName }}</h2>
+            
+                      <!-- Add Font Awesome CDN for the map icon -->
+            <div class="product-description">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="map-book">
+                <div class="map-button" (click)="openInNewTab(product.googleMapLink)">
+                  <div class="map-box">
+                    <i class="fas fa-map-marker-alt map-icon"></i>
+                    <span class="map-text"></span>
+                  </div>
+                </div>
+                <!-- routerLink="driving-school-details" -->
+                <button class="book" (click)="viewSchoolDetails(product.schoolName)">Book</button>
+
+              </div>
+              <div class="product-address">{{ product.address }}</div>
+              <!-- <div class="address-card"> -->
+                <!-- <p
+                  class="address"
+                  [class.expanded]="isExpanded"
+                  #addressText
+                >
+                  {{ product.address }}
+                </p>
+                <span
+                  class="read-more"
+                  *ngIf="addressText.scrollHeight > addressText.offsetHeight || isExpanded"
+                  (click)="toggleReadMore()"
+                >
+                  {{ isExpanded ? 'Read less' : 'Read more' }}
+                </span> -->
+              <!-- </div> -->
+              
+            </div>
+
+        
+            <div class="product-actions">
+              <!-- Add Font Awesome CDN for the star icon -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="rating">
+                <div class="rating-box">
+                  <span class="rating-value">{{product.googleRating}}</span>
+                  <i class="fas fa-star star-icon"></i>
+                </div>
+                <!-- <span class="rating-text">529 Ratings</span> -->
+              </div>
+
+              <!-- Add Font Awesome CDN for icons -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="call-button">
+                <button class="fas fa-phone call-icon" (click)="copyPhoneNumber()">
+                  <span class="phone-number">{{product.phoneNumber}}</span>
+                </button>
+              </div>
+
+              
+              
+              <label class="favorite">
+                <input type="checkbox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                  <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z"></path>
+                </svg>
+              </label>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="card" *ngIf="searchOn">
+          <div class="product-card" *ngFor="let product of searchedDrivingSchoolsList" >
+            <div class="product-image">
+              <!-- Optionally add an image -->
+              <img [src]="product.photoUrl" alt="Product Image" *ngIf="product.photoUrl">
+            </div>
+        
+            <h2 class="product-name" (click)="viewSchoolDetails(product.schoolName)">{{ product.schoolName }}</h2>
+            
+                      <!-- Add Font Awesome CDN for the map icon -->
+            <div class="product-description">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="map-book">
+                <div class="map-button" (click)="openInNewTab(product.googleMapLink)">
+                  <div class="map-box">
+                    <i class="fas fa-map-marker-alt map-icon"></i>
+                    <span class="map-text"></span>
+                  </div>
+                </div>
+                <!-- routerLink="driving-school-details" -->
+                <button class="book" (click)="viewSchoolDetails(product.schoolName)">Book</button>
+
+              </div>
+              <div class="product-address">{{ product.address }}</div>
+              <!-- <div class="address-card"> -->
+                <!-- <p
+                  class="address"
+                  [class.expanded]="isExpanded"
+                  #addressText
+                >
+                  {{ product.address }}
+                </p>
+                <span
+                  class="read-more"
+                  *ngIf="addressText.scrollHeight > addressText.offsetHeight || isExpanded"
+                  (click)="toggleReadMore()"
+                >
+                  {{ isExpanded ? 'Read less' : 'Read more' }}
+                </span> -->
+              <!-- </div> -->
+              
+            </div>
+
+        
+            <div class="product-actions">
+              <!-- Add Font Awesome CDN for the star icon -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="rating">
+                <div class="rating-box">
+                  <span class="rating-value">{{product.googleRating}}</span>
+                  <i class="fas fa-star star-icon"></i>
+                </div>
+                <!-- <span class="rating-text">529 Ratings</span> -->
+              </div>
+
+              <!-- Add Font Awesome CDN for icons -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="call-button">
+                <button class="fas fa-phone call-icon" (click)="copyPhoneNumber()">
+                  <span class="phone-number">{{product.phoneNumber}}</span>
+                </button>
+              </div>
+
+              
+              
+              <label class="favorite">
+                <input type="checkbox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                  <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z"></path>
+                </svg>
+              </label>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="card" *ngIf="ratingFilterOn">
+          <div class="product-card" *ngFor="let product of drivingSchoolListrating" >
+            <div class="product-image">
+              <!-- Optionally add an image -->
+              <img [src]="product.photoUrl" alt="Product Image" *ngIf="product.photoUrl">
+            </div>
+        
+            <h2 class="product-name" (click)="viewSchoolDetails(product.schoolName)">{{ product.schoolName }}</h2>
+            
+                      <!-- Add Font Awesome CDN for the map icon -->
+            <div class="product-description">
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="map-book">
+                <div class="map-button" (click)="openInNewTab(product.googleMapLink)">
+                  <div class="map-box">
+                    <i class="fas fa-map-marker-alt map-icon"></i>
+                    <span class="map-text"></span>
+                  </div>
+                </div>
+                <!-- routerLink="driving-school-details" -->
+                <button class="book" (click)="viewSchoolDetails(product.schoolName)">Book</button>
+
+              </div>
+              <div class="product-address">{{ product.address }}</div>
+              <!-- <div class="address-card"> -->
+                <!-- <p
+                  class="address"
+                  [class.expanded]="isExpanded"
+                  #addressText
+                >
+                  {{ product.address }}
+                </p>
+                <span
+                  class="read-more"
+                  *ngIf="addressText.scrollHeight > addressText.offsetHeight || isExpanded"
+                  (click)="toggleReadMore()"
+                >
+                  {{ isExpanded ? 'Read less' : 'Read more' }}
+                </span> -->
+              <!-- </div> -->
+              
+            </div>
+
+        
+            <div class="product-actions">
+              <!-- Add Font Awesome CDN for the star icon -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="rating">
+                <div class="rating-box">
+                  <span class="rating-value">{{product.googleRating}}</span>
+                  <i class="fas fa-star star-icon"></i>
+                </div>
+                <!-- <span class="rating-text">529 Ratings</span> -->
+              </div>
+
+              <!-- Add Font Awesome CDN for icons -->
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+              <div class="call-button">
+                <button class="fas fa-phone call-icon" (click)="copyPhoneNumber()">
+                  <span class="phone-number">{{product.phoneNumber}}</span>
+                </button>
+              </div>
+
+              
+              
+              <label class="favorite">
+                <input type="checkbox">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
+                  <path d="M12 20a1 1 0 0 1-.437-.1C11.214 19.73 3 15.671 3 9a5 5 0 0 1 8.535-3.536l.465.465.465-.465A5 5 0 0 1 21 9c0 6.646-8.212 10.728-8.562 10.9A1 1 0 0 1 12 20z"></path>
+                </svg>
+              </label>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="filter-content">
+          <div class="filters">
+            <!-- <h2 >Filters</h2> -->
+          
+            <!-- Filter by Distance -->
+            <div class="filter-item">
+              <label for="distance">Distance (in km):</label>
+              <input
+                type="range"
+                id="distance"
+                min="1"
+                max="7"
+                [(ngModel)]="filters.distance"
+              />
+              <br>
+              <span>{{ filters.distance }}</span>
+            </div>
+
+            <div class="filter-actions">
+              <button class="apply" (click)="applyFilters()">Apply Filters</button>
+              <button class="close" (click)="closeDropdown()">Remove</button>
+            </div>
+          </div>
+          
+            <!-- Filter by Pricing -->
+            <!-- <div class="filter-item">
+              <label for="pricing">Max Pricing:</label>
+              <input
+                type="number"
+                id="pricing"
+                min="0"
+                [(ngModel)]="filters.pricing"
+                placeholder="Enter max price"
+              />
+            </div> -->
+
+          <div class="filters">
+            <!-- Filter by Rating -->
+            <div class="filter-item">
+              <label for="rating">Minimum Rating:</label>
+              <!-- <div class="star-rating">
+                <span
+                  *ngFor="let star of stars; let i = index"
+                  class="star"
+                  [ngClass]="{ 'filled': i < filters.rating }"
+                  (click)="setRating(i + 1)"
+                >
+                  ★
+              </span>
+              </div> -->
+              <input
+              type="range"
+              id="rating"
+              min="1"
+              max="5"
+              step="0.1"
+              [(ngModel)]="filters.rating"
+              />
+              <br>
+              <span>{{ filters.rating }}</span>
+            </div>
+          
+            <div class="filter-actions">
+              <button class="apply" (click)="ratingFilter()">Apply Filters</button>
+              <button class="close" (click)="closeDropdown()">Remove</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+

@@ -1,0 +1,48 @@
+<div>
+    <div class="filters">
+        <h2>Filter Options</h2>
+      
+        <!-- Filter by Distance -->
+        <div class="filter-item">
+          <label for="distance">Distance (in km):</label>
+          <input
+            type="range"
+            id="distance"
+            min="1"
+            max="50"
+            [(ngModel)]="filters.distance"
+          />
+          <span>{{ filters.distance }} km</span>
+        </div>
+      
+        <!-- Filter by Pricing -->
+        <div class="filter-item">
+          <label for="pricing">Max Pricing:</label>
+          <input
+            type="number"
+            id="pricing"
+            min="0"
+            [(ngModel)]="filters.pricing"
+            placeholder="Enter max price"
+          />
+        </div>
+      
+        <!-- Filter by Rating -->
+        <div class="filter-item">
+          <label for="rating">Minimum Rating:</label>
+          <select id="rating" [(ngModel)]="filters.rating">
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+      
+        <!-- Apply Filters -->
+        <div class="filter-actions">
+          <button (click)="applyFilters()">Apply Filters</button>
+        </div>
+    </div>
+      
+</div>

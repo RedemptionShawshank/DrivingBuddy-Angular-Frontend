@@ -1,0 +1,590 @@
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    text-align: center;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .school-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .school-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .school-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .school-card h2 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #0056b3;
+  }
+  
+  .school-card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .school-card button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .school-card button:hover {
+    background-color: #003d82;
+  }
+   */
+
+.container1{
+  border: 20px solid #dddbdb;
+  /* height:100vh; */
+  border: none; /* No border */
+  display:flex;
+  flex-direction: column;
+  background-color: #dddbdb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.search-box{
+  /* text-align: center; */
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  /* justify-items: center; */
+
+  height: 20vh;
+}
+
+.inner-box{
+  height:fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* From Uiverse.io by Bodyhc */ 
+.search {
+  display: inline-block;
+  position: relative;
+}
+
+.search input[type="text"] {
+  width: 24rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 7.5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.add {
+  background-color: #f44947;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.7rem 20px;
+  border-radius: 7.5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); */
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: .9s ease;
+}
+
+.add:hover {
+  transform: scale(1);
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 0, 0);
+}
+
+.dropdown {
+
+  justify-content: center;
+  align-items: center;
+  
+  position:absolute;
+  background: #fff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  z-index: 10;
+  width: 24rem;
+  /* width: 300px; */
+}
+
+.filter-content{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filters {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  width: 20rem;
+  background-color: #f9f9f9;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.filter-item {
+  height: auto;
+  justify-content: center;
+}
+
+.filter-item label {
+  display: block;
+  font-weight: bold;
+}
+
+.filter-item input,select{
+  width: 18rem;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+.filter-actions {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.apply {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.apply:hover {
+  background-color: #0056b3;
+}
+
+.close{
+  padding: 10px 15px;
+  background-color:#f51515;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+.close:hover {
+  background-color: #b30000;
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+  font-size: 2rem;
+  cursor: pointer;
+  justify-content: center;
+  height: -5rem;
+}
+
+.star {
+  color: #ccc; /* Default star color */
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: #f39c12; /* Filled star color */
+}
+
+.star:hover,
+.star:hover ~ .star {
+  color: #ffcc00; /* Hover effect */
+}
+
+
+
+/* card css code */
+
+.container2{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height:100vh;
+  /* background-color: aqua; */
+}
+
+.content-outer{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  /* background-color: beige; */
+}
+
+.content{
+  display: flex;
+  gap:1rem;
+}
+
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 cards per row */
+  gap: 20px;
+  justify-content: center; /* Center the grid horizontally */
+  align-content: center; /* Center the grid vertically */
+  height: auto;
+  text-transform: capitalize;
+  width: auto;
+
+}
+
+@media (max-width:1130px){
+
+  .content{
+    display: flex;
+    flex-direction: column-reverse;
+    gap:1rem;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2,1fr); /* 3 cards per row */
+    gap: 20px;
+    justify-content: center; /* Center the grid horizontally */
+    align-content: center; /* Center the grid vertically */
+  }
+  
+  .filter-content{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (max-width:780px){
+
+  .content{
+    display: flex;
+    flex-direction: column-reverse;
+    gap:1rem;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 3 cards per row */
+    gap: 20px;
+    justify-content: center; /* Center the grid horizontally */
+    align-content: center; /* Center the grid vertically */
+  }
+
+  .filter-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+}
+
+/* Product Card Styling */
+.product-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 20rem;
+  /* text-align: center; */
+}
+
+.product-name {
+  font-size: 1.25em;
+  margin: 0 0 10px;
+  color: #333;
+  cursor: pointer;
+  text-transform:capitalize;
+  height: 4rem;
+  box-sizing: border-box;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 0.25rem; */
+}
+
+.product-image img {
+  height: 10rem;
+  width: 100%;
+  border-radius: .5rem;
+  transition: .3s ease;
+  margin: 0 auto;
+  padding-bottom: 1px;
+}
+
+.product-image img:hover {
+  box-shadow: rgba(102, 88, 27, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+ }
+
+.product-description {
+  font-size: 0.8em;
+  color: #000000;
+  margin-bottom: 20px;
+  height: 5.75rem;
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-book{
+  display: flex;
+  justify-content: space-between;
+}
+
+.book {
+  padding: 0.5rem 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content:space-around;
+}
+
+.book:hover {
+  background-color: #0056b3;
+}
+
+.address-card {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.address {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits to 3 lines */
+  line-clamp: 3; /* Limits to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5; /* Adjust based on your line height */
+  max-height: calc(1.5em * 3); /* Ensure max height matches 3 lines */
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 5px;
+  color: blue;
+  cursor: pointer;
+}
+
+.address.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+  scale: 0.7;
+}
+
+
+/* Icon Styling */
+.product-actions {
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+  /*css style to keep this div at the bottom of the card*/
+
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.rating-box {
+  display: flex;
+  align-items: center;
+  background-color: #008000; /* Green background */
+  color: white; /* Text color */
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+
+}
+
+.rating-value {
+  margin-right: 5px; /* Space between the number and star */
+}
+
+.star-icon {
+  color: white; /* White star icon */
+  font-size: 0.5rem; /* Adjust the star size */
+}
+
+.rating-text {
+  color: #333; /* Text color for "529 Ratings" */
+  font-size: 16px;
+}
+
+
+.icon {
+  font-size: 1rem;
+  cursor: pointer;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.icon.active {
+  color: red;
+}
+
+.map-button {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.map-box {
+  display: flex;
+  align-items: center;
+  background-color: #008000; /* Green background */
+  color: white; /* Text color */
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.map-icon {
+  color: white; /* White icon */
+  font-size: 1rem; /* Adjust icon size */
+}
+
+.map-text {
+  font-size: 1rem; /* Text size */
+}
+
+.map-box:hover {
+  background-color: #006400; /* Darker green on hover */
+}
+
+
+.call-button button {
+  display: flex;
+  align-items: center;
+  background-color: #008000; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  */
+}
+
+.call-button .call-icon {
+  /* margin-right: 10px;  */
+  font-size: 1rem; /* Icon size */
+  color: white; /* Icon color set to white */
+}
+
+.call-button button:hover {
+  background-color: #006400; /* Darker green on hover */
+}
+
+.phone-number{
+  margin-left: 0.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.favorite {
+  width: 30px;
+  height: 30px;
+  right: 100px;
+  cursor: pointer;
+}
+
+.favorite input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.favorite input:checked ~ svg {
+  animation: bouncing 0.5s;
+  fill: rgb(255, 95, 95);
+  filter: drop-shadow(0px 3px 1px rgba(53, 53, 53, 0.14));
+}
+
+.favorite svg {
+  fill: #a8a8a8;
+}
+
+.favorite {
+  color: #a8a8a8;
+}
+
+
+
+
